@@ -55,10 +55,10 @@ A user story is considered "Done" only when it meets all of the following criter
     - 完了状態が正しく切り替わる
     - 他クライアントにも即時反映される
 
-- **🕒　Story 4: ユーザーとして、不要なToDoを削除したい**
+- **✅　Story 4: ユーザーとして、不要なToDoを削除したい**
   - タスク:
-    - [ ] 削除ボタンで `DELETE /api/todos/[id]` を送信
-    - [ ] 削除後、WebSocketで全クライアントに通知
+    - [x] 削除ボタンで `DELETE /api/todos/[id]` を送信
+    - [x] 削除後、WebSocketで全クライアントに通知
   - 受け入れ条件:
     - 削除したタスクが一覧から消える
     - 他クライアントにも即時反映される
@@ -66,3 +66,7 @@ A user story is considered "Done" only when it meets all of the following criter
 - **🕒　Story 5: ユーザーとして、タスクを追加したらFormから文字列が消えてほしい**
   - 受け入れ条件:
     - タスクを「追加」すると、入力済みのタイトルが削除されること
+
+- **🕒　Story 6: Tailwindを適用して、さわやかなスタイルのデザインを適用してほしい**
+  - nextのテンプレートCSSが消えていること
+  - `Get started by editing..` `Learn` `examples` などのデフォルトの項目が画面から消えていること

@@ -9,6 +9,9 @@ export function TodoList({ todos }: Props) {
   const toggle = async (id: string) => {
     await fetch(`/api/todos/${id}`, { method: 'PATCH' });
   };
+  const remove = async (id: string) => {
+    await fetch(`/api/todos/${id}`, { method: 'DELETE' });
+  };
   return (
     <ul aria-label="todos">
       {todos.map((t) => (
@@ -19,7 +22,7 @@ export function TodoList({ todos }: Props) {
             onChange={() => toggle(t.id)}
           />
           <span>{t.title}</span>
-          <button>Delete</button>
+          <button onClick={() => remove(t.id)}>Delete</button>
         </li>
       ))}
     </ul>
