@@ -45,4 +45,3 @@ describe('GET /api/todos', () => {
     expect(body[1].completed).toBe(true);
   });
 });
-

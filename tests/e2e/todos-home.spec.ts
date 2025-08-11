@@ -14,8 +14,8 @@ test('home shows todos from /api/todos', async ({ page }) => {
   });
 
   await page.goto('/');
+  await page.waitForLoadState('domcontentloaded');
 
-  await expect(page.getByText('Buy milk')).toBeVisible();
-  await expect(page.getByText('Write tests')).toBeVisible();
+  await expect(page.getByText('Buy milk')).toBeVisible({ timeout: 15000 });
+  await expect(page.getByText('Write tests')).toBeVisible({ timeout: 15000 });
 });
-

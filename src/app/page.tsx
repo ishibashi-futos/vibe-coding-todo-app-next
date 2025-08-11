@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { TodosRealtime } from './components/TodosRealtime';
+import { AddTodoForm } from './components/AddTodoForm';
 
 export default function Home() {
   return (
@@ -49,7 +50,8 @@ export default function Home() {
             Read our docs
           </a>
         </div>
-        <div className="w-full mt-8">
+        <div className="w-full mt-8 flex flex-col gap-4">
+          <AddTodoForm />
           <TodosRealtime />
         </div>
       </main>

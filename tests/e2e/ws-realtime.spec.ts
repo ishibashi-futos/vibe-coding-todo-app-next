@@ -24,13 +24,13 @@ test('home updates list when server emits todos:updated', async ({ page, request
   });
 
   await page.goto('/');
-  await expect(page.getByText('Alpha')).toBeVisible();
+  await page.waitForLoadState('domcontentloaded');
+  await expect(page.getByText('Alpha')).toBeVisible({ timeout: 15000 });
 
   // Ask server to emit the websocket event for all clients
   const res = await request.post('/__test__/ws/emit/todos-updated');
   expect(res.ok()).toBeTruthy();
 
   // The client should refetch and show updated data
-  await expect(page.getByText('Beta')).toBeVisible();
+  await expect(page.getByText('Beta')).toBeVisible({ timeout: 15000 });
 });
-

@@ -7,7 +7,7 @@ type Props = {
 
 export function TodoList({ todos }: Props) {
   return (
-    <ul>
+    <ul aria-label="todos">
       {todos.map((t) => (
         <li key={t.id}>
           <input type="checkbox" checked={t.completed} readOnly />

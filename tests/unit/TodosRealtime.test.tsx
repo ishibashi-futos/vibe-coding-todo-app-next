@@ -36,9 +36,7 @@ describe('TodosRealtime component', () => {
     const root = createRoot(container);
 
     // Initial state
-    currentData = [
-      { id: '1', title: 'Alpha', description: '', dueDate: '', completed: false },
-    ];
+    currentData = [{ id: '1', title: 'Alpha', description: '', dueDate: '', completed: false }];
 
     await act(async () => {
       root.render(<TodosRealtime />);
@@ -48,9 +46,7 @@ describe('TodosRealtime component', () => {
     expect(container.textContent).toContain('Alpha');
 
     // After update
-    currentData = [
-      { id: '2', title: 'Beta', description: '', dueDate: '', completed: true },
-    ];
+    currentData = [{ id: '2', title: 'Beta', description: '', dueDate: '', completed: true }];
 
     await act(async () => {
       emit('todos:updated');

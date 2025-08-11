@@ -16,7 +16,7 @@ describe('fetchTodos', () => {
       new Response(JSON.stringify(data), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
-      }) as any,
+      }) as any
     );
 
     const todos = await fetchTodos();
@@ -25,4 +25,3 @@ describe('fetchTodos', () => {
     expect(fetch).toHaveBeenCalledWith('/api/todos', expect.any(Object));
   });
 });
-
