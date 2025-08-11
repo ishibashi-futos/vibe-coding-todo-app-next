@@ -16,9 +16,8 @@ app.prepare().then(() => {
   const httpServer = createServer((req, res) => {
     const parsedUrl = parse(req.url!, true);
 
-    // Test-only endpoint to emit todos:updated for E2E
+    // Endpoint to emit todos:updated for clients (used by API handlers & tests)
     if (
-      process.env.E2E_TESTING === '1' &&
       req.method === 'POST' &&
       parsedUrl.pathname === '/__test__/ws/emit/todos-updated'
     ) {

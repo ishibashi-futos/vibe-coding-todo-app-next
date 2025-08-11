@@ -46,11 +46,11 @@ A user story is considered "Done" only when it meets all of the following criter
     - 新規タスクが一覧に追加される
     - 他クライアントにも即時反映される
 
-- **🕒　Story 3: ユーザーとして、既存ToDoの完了状態を切り替えたい**
+- **✅　Story 3: ユーザーとして、既存ToDoの完了状態を切り替えたい**
   - タスク:
-    - [ ] チェックボックスで完了/未完了をトグル
-    - [ ] `PATCH /api/todos/[id]` で状態更新
-    - [ ] 更新後、WebSocketで全クライアントに通知
+    - [x] チェックボックスで完了/未完了をトグル
+    - [x] `PATCH /api/todos/[id]` で状態更新
+    - [x] 更新後、WebSocketで全クライアントに通知
   - 受け入れ条件:
     - 完了状態が正しく切り替わる
     - 他クライアントにも即時反映される

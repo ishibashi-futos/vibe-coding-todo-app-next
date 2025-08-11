@@ -29,13 +29,11 @@ export async function POST(req: Request) {
   await db.write();
 
   // In E2E environment, ask dev server to emit websocket event so clients refetch
-  if (process.env.E2E_TESTING === '1') {
-    try {
-      // Absolute URL to reach the same server in tests
-      await fetch('http://localhost:3000/__test__/ws/emit/todos-updated', { method: 'POST' });
-    } catch {
-      // ignore
-    }
+  try {
+    // Absolute URL to reach the same server
+    await fetch('http://localhost:3000/__test__/ws/emit/todos-updated', { method: 'POST' });
+  } catch {
+    // ignore
   }
 
   return Response.json(newTodo, { status: 201 });
