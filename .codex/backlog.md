@@ -4,6 +4,14 @@
 ユーザーストーリー単位に `feature/ユーザーストーリーの番号-ユーザーストーリーの英語名` ブランチを作成し、
 実装が完了したらPull Requestを作成します。
 
+### **Story Workflow**
+
+* Stories are prioritized from top to bottom.
+* **🕒** = TODO
+* **✅** = DONE
+
+Always work on the highest story marked with **🕒**. When you finish it, change it to **✅** and move to the next one.
+
 ### **Definition of Done (DoD)**
 
 A user story is considered "Done" only when it meets all of the following criteria:
@@ -20,7 +28,7 @@ A user story is considered "Done" only when it meets all of the following criter
 
 ---
 
-- **Story 1: ユーザーとして、保存されている全てのToDoを一覧で見たい**
+- **🕒　Story 1: ユーザーとして、保存されている全てのToDoを一覧で見たい**
   - タスク:
     - [ ] ページ表示時に `GET /api/todos` で全タスク取得
     - [ ] 各タスクに「完了チェック」「タスク名」「削除ボタン」を表示
@@ -29,7 +37,7 @@ A user story is considered "Done" only when it meets all of the following criter
     - 一覧に全タスクが表示される
     - リアルタイムでリストが更新される
 
-- **Story 2: ユーザーとして、新しいToDoを追加したい**
+- **🕒　Story 2: ユーザーとして、新しいToDoを追加したい**
   - タスク:
     - [ ] 入力フォームでタスク名を入力できる
     - [ ] 「追加」ボタンで `POST /api/todos` にリクエスト送信
@@ -38,7 +46,7 @@ A user story is considered "Done" only when it meets all of the following criter
     - 新規タスクが一覧に追加される
     - 他クライアントにも即時反映される
 
-- **Story 3: ユーザーとして、既存ToDoの完了状態を切り替えたい**
+- **🕒　Story 3: ユーザーとして、既存ToDoの完了状態を切り替えたい**
   - タスク:
     - [ ] チェックボックスで完了/未完了をトグル
     - [ ] `PATCH /api/todos/[id]` で状態更新
@@ -47,7 +55,7 @@ A user story is considered "Done" only when it meets all of the following criter
     - 完了状態が正しく切り替わる
     - 他クライアントにも即時反映される
 
-- **Story 4: ユーザーとして、不要なToDoを削除したい**
+- **🕒　Story 4: ユーザーとして、不要なToDoを削除したい**
   - タスク:
     - [ ] 削除ボタンで `DELETE /api/todos/[id]` を送信
     - [ ] 削除後、WebSocketで全クライアントに通知
@@ -55,14 +63,14 @@ A user story is considered "Done" only when it meets all of the following criter
     - 削除したタスクが一覧から消える
     - 他クライアントにも即時反映される
 
-- **Story 5: ユーザーとして、アプリ再起動後もToDoデータが保持されてほしい**
+- **🕒　Story 5: ユーザーとして、アプリ再起動後もToDoデータが保持されてほしい**
   - タスク:
     - [ ] すべてのデータ操作をLowDB経由で行う
     - [ ] `db.json` に即時書き込み
   - 受け入れ条件:
     - アプリ再起動後もデータが消えない
 
-- **Story 6: 開発者として、機能の品質をテストで担保したい**
+- **🕒　Story 6: 開発者として、機能の品質をテストで担保したい**
   - タスク:
     - [ ] UIコンポーネントのユニットテスト（Vitest）
     - [ ] イベントハンドラのテスト
