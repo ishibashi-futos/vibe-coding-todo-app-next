@@ -9,7 +9,9 @@
     "lint": "next lint",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "clean": "rm -rf .next",
+    "ci": "npm run lint && npm run test:unit && npm run test:e2e"
   },
   "dependencies": {
     "lowdb": "^7.0.1",
