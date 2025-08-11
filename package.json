@@ -11,7 +11,9 @@
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "clean": "rm -rf .next",
-    "ci": "npm run lint && npm run test:unit && npm run test:e2e"
+    "ci": "npm run lint && npm run test:unit && npm run test:e2e",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "lowdb": "^7.0.1",
@@ -32,7 +34,9 @@
     "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
+    "eslint-config-prettier": "^10.1.8",
     "jsdom": "^26.1.0",
+    "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
     "typescript": "^5",

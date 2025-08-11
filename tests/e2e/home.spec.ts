@@ -7,4 +7,3 @@ test('homepage renders and shows docs link', async ({ page }) => {
   await expect(page.getByRole('link', { name: 'Read our docs' })).toBeVisible();
   await expect(page.getByText('Learn')).toBeVisible();
 });
-

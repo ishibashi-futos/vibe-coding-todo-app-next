@@ -15,4 +15,3 @@ describe('math helpers', () => {
     expect(isEven(3)).toBe(false);
   });
 });
-
