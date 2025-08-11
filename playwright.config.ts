@@ -13,5 +13,8 @@ export default defineConfig({
     port: 3000,
     reuseExistingServer: true,
     timeout: 60_000,
+    env: {
+      E2E_TESTING: '1',
+    },
   },
 });

@@ -1,7 +1,7 @@
 import { Low } from 'lowdb';
 import { JSONFile } from 'lowdb/node';
 
-type Todo = {
+export type Todo = {
   id: string;
   title: string;
   description: string;

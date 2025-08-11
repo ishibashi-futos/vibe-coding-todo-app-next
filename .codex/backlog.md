@@ -28,11 +28,11 @@ A user story is considered "Done" only when it meets all of the following criter
 
 ---
 
-- **🕒　Story 1: ユーザーとして、保存されている全てのToDoを一覧で見たい**
+- **✅　Story 1: ユーザーとして、保存されている全てのToDoを一覧で見たい**
   - タスク:
-    - [ ] ページ表示時に `GET /api/todos` で全タスク取得
-    - [ ] 各タスクに「完了チェック」「タスク名」「削除ボタン」を表示
-    - [ ] WebSocketの `todos:updated` イベント受信時にリストを再取得
+    - [x] ページ表示時に `GET /api/todos` で全タスク取得
+    - [x] 各タスクに「完了チェック」「タスク名」「削除ボタン」を表示
+    - [x] WebSocketの `todos:updated` イベント受信時にリストを再取得
   - 受け入れ条件:
     - 一覧に全タスクが表示される
     - リアルタイムでリストが更新される
