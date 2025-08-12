@@ -15,6 +15,7 @@ app.prepare().then(() => {
   let io: Server;
   const httpServer = createServer((req, res) => {
     const parsedUrl = parse(req.url!, true);
+    const pathname = parsedUrl.pathname || '/';
 
     // Endpoint to emit todos:updated for clients (used by API handlers & tests)
     if (
@@ -28,9 +29,8 @@ app.prepare().then(() => {
     }
 
     if (
-      process.env.E2E_TESTING === '1' &&
       req.method === 'POST' &&
-      parsedUrl.pathname === '/__test__/db/seed'
+      pathname === '/__test__/db/seed'
     ) {
       let body = '';
       req.on('data', (chunk) => (body += chunk));
@@ -48,6 +48,96 @@ app.prepare().then(() => {
           res.end('Bad Request');
         }
       });
+      return;
+    }
+
+    // Minimal API handlers in dev to support App Router E2E
+    if (pathname === '/api/todos' && req.method === 'GET') {
+      (async () => {
+        await db.read();
+        const todos = db.data?.todos ?? [];
+        res.setHeader('Content-Type', 'application/json');
+        res.statusCode = 200;
+        res.end(JSON.stringify(todos));
+      })();
+      return;
+    }
+
+    if (pathname === '/api/todos' && req.method === 'POST') {
+      let body = '';
+      req.on('data', (chunk) => (body += chunk));
+      req.on('end', async () => {
+        try {
+          const payload = JSON.parse(body || '{}');
+          const title = typeof payload.title === 'string' ? payload.title.trim() : '';
+          if (!title) {
+            res.statusCode = 400;
+            res.end(JSON.stringify({ error: 'title is required' }));
+            return;
+          }
+          await db.read();
+          if (!db.data) db.data = { todos: [] } as any;
+          const newTodo = {
+            id: (globalThis.crypto?.randomUUID?.() || Date.now().toString()) as string,
+            title,
+            description: '',
+            dueDate: '',
+            completed: false,
+          };
+          db.data.todos = [...db.data.todos, newTodo];
+          await db.write();
+          io?.emit('todos:updated');
+          res.setHeader('Content-Type', 'application/json');
+          res.statusCode = 201;
+          res.end(JSON.stringify(newTodo));
+        } catch (e) {
+          res.statusCode = 400;
+          res.end('Bad Request');
+        }
+      });
+      return;
+    }
+
+    if (pathname?.startsWith('/api/todos/') && req.method === 'PATCH') {
+      const id = pathname.split('/').pop() as string;
+      (async () => {
+        await db.read();
+        if (!db.data) db.data = { todos: [] } as any;
+        const idx = db.data.todos.findIndex((t) => t.id === id);
+        if (idx === -1) {
+          res.statusCode = 404;
+          res.end('Not Found');
+          return;
+        }
+        const current = db.data.todos[idx];
+        const updated = { ...current, completed: !current.completed };
+        db.data.todos[idx] = updated;
+        await db.write();
+        io?.emit('todos:updated');
+        res.setHeader('Content-Type', 'application/json');
+        res.statusCode = 200;
+        res.end(JSON.stringify(updated));
+      })();
+      return;
+    }
+
+    if (pathname?.startsWith('/api/todos/') && req.method === 'DELETE') {
+      const id = pathname.split('/').pop() as string;
+      (async () => {
+        await db.read();
+        if (!db.data) db.data = { todos: [] } as any;
+        const before = db.data.todos.length;
+        db.data.todos = db.data.todos.filter((t) => t.id !== id);
+        if (db.data.todos.length === before) {
+          res.statusCode = 404;
+          res.end('Not Found');
+          return;
+        }
+        await db.write();
+        io?.emit('todos:updated');
+        res.statusCode = 204;
+        res.end();
+      })();
       return;
     }
 

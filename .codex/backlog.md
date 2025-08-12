@@ -63,10 +63,12 @@ A user story is considered "Done" only when it meets all of the following criter
     - 削除したタスクが一覧から消える
     - 他クライアントにも即時反映される
 
-- **🕒　Story 5: ユーザーとして、タスクを追加したらFormから文字列が消えてほしい**
+- **✅　Story 5: ユーザーとして、タスクを追加したらFormから文字列が消えてほしい**
   - 受け入れ条件:
     - タスクを「追加」すると、入力済みのタイトルが削除されること
 
 - **🕒　Story 6: Tailwindを適用して、さわやかなスタイルのデザインを適用してほしい**
-  - nextのテンプレートCSSが消えていること
-  - `Get started by editing..` `Learn` `examples` などのデフォルトの項目が画面から消えていること
+  - 受け入れ条件:
+    - nextのテンプレートCSSが消えていること
+    - `Get started by editing..` `Learn` `examples` などのデフォルトの項目が画面から消えていること
+    - Tailwindのスタイルが適用されて、さわやかなスタイルの見た目になっていること

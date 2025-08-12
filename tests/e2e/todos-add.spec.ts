@@ -10,7 +10,10 @@ test('adding a todo via form updates the list', async ({ page, request }) => {
 
   // Fill and submit the form
   await page.getByPlaceholder('タスク名を入力').fill('Zeta');
-  await page.getByRole('button', { name: '追加' }).click();
+  const [post] = await Promise.all([
+    page.waitForResponse((r) => r.url().includes('/api/todos') && r.request().method() === 'POST' && r.status() >= 200),
+    page.getByRole('button', { name: '追加' }).click(),
+  ]);
 
   // After server processes and emits update, the list should include new item
   await expect(page.getByText('Zeta')).toBeVisible({ timeout: 15000 });
