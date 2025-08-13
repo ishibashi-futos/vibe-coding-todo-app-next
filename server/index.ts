@@ -18,20 +18,14 @@ app.prepare().then(() => {
     const pathname = parsedUrl.pathname || '/';
 
     // Endpoint to emit todos:updated for clients (used by API handlers & tests)
-    if (
-      req.method === 'POST' &&
-      parsedUrl.pathname === '/__test__/ws/emit/todos-updated'
-    ) {
+    if (req.method === 'POST' && parsedUrl.pathname === '/__test__/ws/emit/todos-updated') {
       io?.emit('todos:updated');
       res.statusCode = 204;
       res.end();
       return;
     }
 
-    if (
-      req.method === 'POST' &&
-      pathname === '/__test__/db/seed'
-    ) {
+    if (req.method === 'POST' && pathname === '/__test__/db/seed') {
       let body = '';
       req.on('data', (chunk) => (body += chunk));
       req.on('end', async () => {
