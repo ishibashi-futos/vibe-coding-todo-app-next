@@ -13,14 +13,10 @@ export function TodoList({ todos }: Props) {
     await fetch(`/api/todos/${id}`, { method: 'DELETE' });
   };
   return (
-    <ul aria-label="todos">
+    <ul aria-label="todos" style={{ minHeight: 4 }}>
       {todos.map((t) => (
         <li key={t.id}>
-          <input
-            type="checkbox"
-            checked={t.completed}
-            onChange={() => toggle(t.id)}
-          />
+          <input type="checkbox" checked={t.completed} onChange={() => toggle(t.id)} />
           <span>{t.title}</span>
           <button onClick={() => remove(t.id)}>Delete</button>
         </li>
