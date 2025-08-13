@@ -104,3 +104,19 @@ Always write one test at a time, make it run, then improve structure. Always run
 
 - Start local development with `npm run dev`
 - For production, run `npm run build` then `npm run start`
+
+# **Development Guideline: Adherence to Best Practices**
+
+**Purpose**
+
+This document outlines the policy for writing and maintaining unit tests. It is a mandatory guideline for all developers to ensure the stability, reliability, and future-proof nature of our test suite.
+
+**Policy**
+
+All developers must adhere to modern best practices when writing or modifying tests. This specifically includes the following:
+
+## DO NOT USE ReactDOMTestUtils.act(Deprecated Methods)
+
+- **Do Not Use Deprecated Methods:** Avoid using deprecated functions or methods, such as `ReactDOMTestUtils.act`. Instead, always use the current, recommended alternatives (e.g., `React.act`).
+- **Use Correct Imports:** Ensure that all utilities are imported from their correct and intended packages (e.g., `act` from `react`, not `react-dom/test-utils`).
+- **Maintain a Clean Test Environment:** Ensure that tests do not generate warnings or errors during execution. The presence of such warnings indicates a potential issue that could affect test reliability or mask future problems.
