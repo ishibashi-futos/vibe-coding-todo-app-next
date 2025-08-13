@@ -2,7 +2,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { act } from 'react-dom/test-utils';
+import { act } from 'react';
 
 import { AddTodoForm } from '../../src/app/components/AddTodoForm';
 

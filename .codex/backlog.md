@@ -67,6 +67,21 @@ A user story is considered "Done" only when it meets all of the following criter
   - 受け入れ条件:
     - タスクを「追加」すると、入力済みのタイトルが削除されること
 
+- **✅Fix: Update 'act' imports from 'react-dom/test-utils' to 'react'**
+
+- The test suite is displaying deprecation warnings related to `act` from `react-dom/test-utils`. The output indicates that `ReactDOMTestUtils.act` is now deprecated and should be replaced with `React.act`. This change is a result of updates in React's testing utilities.
+- The warnings appear in multiple test files:
+  - `tests/unit/TodosRealtime.test.tsx`
+  - `tests/unit/TodoList.delete.test.tsx`
+  - `tests/unit/TodoList.toggle.test.tsx`
+  - `tests/unit/AddTodoForm.test.tsx`
+  - `tests/unit/AddTodoForm.clear.test.tsx`
+- Additionally, a separate warning states that the testing environment is not configured to support `act(...)`, which may be related to the outdated import.
+- **Acceptance Criteria**
+  - [x] All instances of `act` imported from `react-dom/test-utils` are replaced with `act` imported from `react`.
+  - [x] The `Vitest` test suite runs without displaying the `ReactDOMTestUtils.act` deprecation warning.
+  - [x] The `The current testing environment is not configured to support act(...)` warning is resolved.
+
 - **🕒　Story 6: Tailwindを適用して、さわやかなスタイルのデザインを適用してほしい**
   - 受け入れ条件:
     - nextのテンプレートCSSが消えていること
