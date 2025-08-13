@@ -43,15 +43,20 @@ export function AddTodoForm() {
   };
 
   return (
-    <form onSubmit={submit}>
+    <form onSubmit={submit} className="flex items-center gap-2">
       <input
         type="text"
         ref={inputRef}
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="タスク名を入力"
+        className="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400"
       />
-      <button type="submit" onClick={(e) => submit(e)}>
+      <button
+        type="submit"
+        onClick={(e) => submit(e)}
+        className="inline-flex items-center rounded bg-sky-600 text-white px-3 py-2 hover:bg-sky-700"
+      >
         追加
       </button>
     </form>

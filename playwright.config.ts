@@ -14,7 +14,7 @@ export default defineConfig({
   webServer: {
     command: 'npm run dev',
     port: 3000,
-    reuseExistingServer: false,
+    reuseExistingServer: true,
     timeout: 60_000,
     env: {
       E2E_TESTING: '1',

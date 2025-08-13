@@ -1,0 +1,45 @@
+/** @vitest-environment jsdom */
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { act } from 'react';
+
+import { TodoList } from '../../src/app/components/TodoList';
+
+describe('TodoList emoji toggle button', () => {
+  beforeEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it('clicking emoji button calls PATCH /api/todos/:id', async () => {
+    const todos = [{ id: '1', title: 'A', description: '', dueDate: '', completed: false }];
+
+    const calls: any[] = [];
+    vi.spyOn(globalThis, 'fetch').mockImplementation(async (input: any, init?: any) => {
+      calls.push({ input, init });
+      return new Response(JSON.stringify({ ...todos[0], completed: true }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      }) as any;
+    });
+
+    const container = document.createElement('div');
+    const root = createRoot(container);
+
+    await act(async () => {
+      root.render(<TodoList todos={todos as any} />);
+      await new Promise((r) => setTimeout(r, 0));
+    });
+
+    const btn = Array.from(container.querySelectorAll('button')).find(
+      (b) => b.textContent === '☐'
+    ) as HTMLButtonElement;
+    expect(btn).toBeTruthy();
+
+    btn.click();
+
+    expect(calls.length).toBe(1);
+    expect(calls[0].input).toBe('/api/todos/1');
+    expect(calls[0].init?.method).toBe('PATCH');
+  });
+});

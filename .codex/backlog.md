@@ -82,8 +82,8 @@ A user story is considered "Done" only when it meets all of the following criter
   - [x] The `Vitest` test suite runs without displaying the `ReactDOMTestUtils.act` deprecation warning.
   - [x] The `The current testing environment is not configured to support act(...)` warning is resolved.
 
-- **🕒　Story 6: Tailwindを適用して、さわやかなスタイルのデザインを適用してほしい**
+- **✅　Story 6: Tailwindを適用して、さわやかなスタイルのデザインを適用してほしい**
   - 受け入れ条件:
-    - nextのテンプレートCSSが消えていること
-    - `Get started by editing..` `Learn` `examples` などのデフォルトの項目が画面から消えていること
-    - Tailwindのスタイルが適用されて、さわやかなスタイルの見た目になっていること
+    - [x] nextのテンプレートCSSが消えていること
+    - [x] `Get started by editing..` `Learn` `examples` などのデフォルトの項目が画面から消えていること
+    - [x] Tailwindのスタイルが適用されて、さわやかなスタイルの見た目になっていること
