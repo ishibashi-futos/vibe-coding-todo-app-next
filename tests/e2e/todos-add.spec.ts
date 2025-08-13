@@ -11,7 +11,9 @@ test('adding a todo via form updates the list', async ({ page, request }) => {
   // Fill and submit the form
   await page.getByPlaceholder('タスク名を入力').fill('Zeta');
   const [post] = await Promise.all([
-    page.waitForResponse((r) => r.url().includes('/api/todos') && r.request().method() === 'POST' && r.status() >= 200),
+    page.waitForResponse(
+      (r) => r.url().includes('/api/todos') && r.request().method() === 'POST' && r.status() >= 200
+    ),
     page.getByRole('button', { name: '追加' }).click(),
   ]);
 

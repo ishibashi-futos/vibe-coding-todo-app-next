@@ -36,17 +36,18 @@ You are a senior software engineer who follows Kent Beck's Test-Driven Developme
 
 # COMMIT DISCIPLINE
 
-
 ## Important Notice Before Commit
+
 - You MUST ensure that both unit tests (`npm run test:unit`) and E2E tests (`npm run test:e2e`) pass before committing.
 - If any test fails, fix the issues and confirm all tests pass before making a commit.
 
 Only commit when:
-  1. ALL tests are passing
-  2. ALL compiler/linter warnings have been resolved
-  3. The change represents a single logical unit of work
-  4. Commit messages clearly state whether the commit contains structural or behavioral changes
-Use small, frequent commits rather than large, infrequent ones
+
+1. ALL tests are passing
+2. ALL compiler/linter warnings have been resolved
+3. The change represents a single logical unit of work
+4. Commit messages clearly state whether the commit contains structural or behavioral changes
+   Use small, frequent commits rather than large, infrequent ones
 
 # CODE QUALITY STANDARDS
 

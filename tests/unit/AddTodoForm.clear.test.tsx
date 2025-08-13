@@ -15,8 +15,8 @@ describe('AddTodoForm input clears after add', () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue(
       new Response(
         JSON.stringify({ id: 'n1', title: 'X', description: '', dueDate: '', completed: false }),
-        { status: 201, headers: { 'Content-Type': 'application/json' } },
-      ) as any,
+        { status: 201, headers: { 'Content-Type': 'application/json' } }
+      ) as any
     );
 
     const container = document.createElement('div');
@@ -29,7 +29,7 @@ describe('AddTodoForm input clears after add', () => {
 
     const input = container.querySelector('input[type="text"]') as HTMLInputElement;
     const button = Array.from(container.querySelectorAll('button')).find(
-      (b) => b.textContent === '追加',
+      (b) => b.textContent === '追加'
     ) as HTMLButtonElement;
 
     input.value = 'Hello';
@@ -42,4 +42,3 @@ describe('AddTodoForm input clears after add', () => {
     expect(input.value).toBe('');
   });
 });
-

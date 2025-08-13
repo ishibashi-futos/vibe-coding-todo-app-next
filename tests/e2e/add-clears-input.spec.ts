@@ -5,7 +5,13 @@ test('adding clears the input field', async ({ page }) => {
     await route.fulfill({
       status: 201,
       contentType: 'application/json',
-      body: JSON.stringify({ id: 'e1', title: 'Gamma', description: '', dueDate: '', completed: false }),
+      body: JSON.stringify({
+        id: 'e1',
+        title: 'Gamma',
+        description: '',
+        dueDate: '',
+        completed: false,
+      }),
     });
   });
 
@@ -15,7 +21,9 @@ test('adding clears the input field', async ({ page }) => {
   const input = page.getByPlaceholder('タスク名を入力');
   await input.fill('Gamma');
   await Promise.all([
-    page.waitForResponse((r) => r.url().includes('/api/todos') && r.request().method() === 'POST' && r.status() >= 200),
+    page.waitForResponse(
+      (r) => r.url().includes('/api/todos') && r.request().method() === 'POST' && r.status() >= 200
+    ),
     page.getByRole('button', { name: '追加' }).click(),
   ]);
 

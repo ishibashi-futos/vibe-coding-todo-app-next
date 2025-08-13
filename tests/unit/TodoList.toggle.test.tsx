@@ -12,9 +12,7 @@ describe('TodoList checkbox toggle', () => {
   });
 
   it('clicking checkbox calls PATCH /api/todos/:id', async () => {
-    const todos = [
-      { id: '1', title: 'A', description: '', dueDate: '', completed: false },
-    ];
+    const todos = [{ id: '1', title: 'A', description: '', dueDate: '', completed: false }];
 
     const calls: any[] = [];
     vi.spyOn(globalThis, 'fetch').mockImplementation(async (input: any, init?: any) => {
@@ -46,4 +44,3 @@ describe('TodoList checkbox toggle', () => {
     expect(calls[0].init?.method).toBe('PATCH');
   });
 });
-

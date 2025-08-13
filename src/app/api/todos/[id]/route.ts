@@ -2,12 +2,9 @@ import { db } from '../../../../lib/database';
 
 type RouteParams = { id: string } | Promise<{ id: string }>;
 
-export async function PATCH(
-  _req: Request,
-  context: { params: RouteParams },
-) {
+export async function PATCH(_req: Request, context: { params: RouteParams }) {
   const p = context.params;
-  const isPromise = <T,>(v: unknown): v is Promise<T> =>
+  const isPromise = <T>(v: unknown): v is Promise<T> =>
     typeof (v as { then?: unknown }).then === 'function';
   const awaited = isPromise<{ id: string }>(p) ? await p : (p as { id: string });
   const id: string | undefined = awaited?.id;
@@ -30,12 +27,9 @@ export async function PATCH(
   return Response.json(updated, { status: 200 });
 }
 
-export async function DELETE(
-  _req: Request,
-  context: { params: RouteParams },
-) {
+export async function DELETE(_req: Request, context: { params: RouteParams }) {
   const p = context.params;
-  const isPromise = <T,>(v: unknown): v is Promise<T> =>
+  const isPromise = <T>(v: unknown): v is Promise<T> =>
     typeof (v as { then?: unknown }).then === 'function';
   const awaited = isPromise<{ id: string }>(p) ? await p : (p as { id: string });
   const id: string | undefined = awaited?.id;

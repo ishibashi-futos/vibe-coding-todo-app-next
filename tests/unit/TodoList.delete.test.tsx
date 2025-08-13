@@ -12,9 +12,7 @@ describe('TodoList delete button', () => {
   });
 
   it('clicking Delete calls DELETE /api/todos/:id', async () => {
-    const todos = [
-      { id: '1', title: 'A', description: '', dueDate: '', completed: false },
-    ];
+    const todos = [{ id: '1', title: 'A', description: '', dueDate: '', completed: false }];
 
     const calls: any[] = [];
     vi.spyOn(globalThis, 'fetch').mockImplementation(async (input: any, init?: any) => {
@@ -31,7 +29,7 @@ describe('TodoList delete button', () => {
     });
 
     const button = Array.from(container.querySelectorAll('button')).find(
-      (b) => b.textContent === 'Delete',
+      (b) => b.textContent === 'Delete'
     ) as HTMLButtonElement;
     expect(button).toBeTruthy();
 
@@ -45,4 +43,3 @@ describe('TodoList delete button', () => {
     expect(calls[0].init?.method).toBe('DELETE');
   });
 });
-

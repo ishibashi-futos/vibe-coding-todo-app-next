@@ -33,4 +33,3 @@ describe('PATCH /api/todos/[id]', () => {
     expect(db.data?.todos?.find((t) => t.id === '1')?.completed).toBe(true);
   });
 });
-

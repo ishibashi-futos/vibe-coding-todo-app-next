@@ -29,4 +29,3 @@ describe('DELETE /api/todos/[id]', () => {
     expect(db.data?.todos?.some((t) => t.id === '2')).toBe(true);
   });
 });
-

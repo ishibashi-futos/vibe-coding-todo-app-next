@@ -26,4 +26,3 @@ test('deleting a todo removes it from the list', async ({ page, request }) => {
   await expect(page.getByText('ToDelete')).toHaveCount(0, { timeout: 15000 } as any);
   await expect(page.getByText('KeepMe')).toBeVisible({ timeout: 15000 });
 });
-
